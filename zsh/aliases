@@ -1,0 +1,2 @@
+alias mvni="mvn clean install dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Denforcer.skip=true -Dcicheck.skip=true -T 4"
+alias mvnu="mvn -U dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Denforcer.skip=true -Dcicheck.skip=true -T 4"
