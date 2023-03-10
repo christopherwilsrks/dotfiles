@@ -21,7 +21,7 @@ export SAVEHIST=10000                   # Maximum events in history file
 export DISABLE_UPDATE_PROMPT=true
 export DISABLE_AUTO_UPDATE=true
 export _Z_DATA="$ZDOTDIR/.z" # z data file
-export ZSH_THEME="robbyrussell"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # p10k
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
@@ -32,7 +32,7 @@ export FZF_COMPLETION_TRIGGER='**'
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-export FZF_DEFAULT_COMMAND='rg --hidden --glob "\!.git" --glob "\!.idea" --glob "\!target" --glob "\!.vscode" ""'
+export FZF_DEFAULT_COMMAND='rg --files-with-matches --no-messages --hidden --glob "!.m2" --glob "!.idea" --glob "!target" --glob "!.vscode" --glob "!.git" --glob "!.cache/bazel" ""'
 export PATH="$PATH:$HOME/.fzf/bin"
 
 # go

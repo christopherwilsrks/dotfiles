@@ -4,9 +4,9 @@
 if ! command -v "zsh" &> /dev/null; then
   echo 'zsh has not been installed. Installing...'
   if command -v "yum" &> /dev/null; then
-    sudo yum install zsh -y
+    yum install zsh -y
   elif command -v "apt" &> /dev/null; then
-    sudo apt install zsh -y
+    apt install zsh -y
   else
     echo 'Unknown distribution! Neither yum nor apt found.'
   fi
@@ -18,7 +18,7 @@ fi
 USERNAME=$(whoami)
 if [ "$SHELL" != "/bin/zsh" ]; then
   echo 'Changing default shell to zsh...'
-  sudo chsh -s /bin/zsh "$USERNAME"
+  chsh -s /bin/zsh "$USERNAME"
 else
   echo 'Default shell already zsh. Skip.'
 fi
@@ -65,10 +65,10 @@ fi
 if ! command -v "rg" &> /dev/null; then
   echo 'RipGrep has not been installed. Installing...'
   if command -v "yum" &> /dev/null; then
-    sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-    sudo yum install ripgrep -y
+    yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+    yum install ripgrep -y
   elif command -v "apt" &> /dev/null; then
-    sudo apt install ripgrep -y
+    apt install ripgrep -y
   else
     echo 'Unknown distribution! Neither yum nor apt found.'
   fi
