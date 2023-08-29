@@ -18,7 +18,11 @@ fi
 USERNAME=$(whoami)
 if [ "$SHELL" != "/bin/zsh" ]; then
   echo 'Changing default shell to zsh...'
-  chsh -s /bin/zsh "$USERNAME"
+  if ! command -v "chsh" &> /dev/null; then
+    echo 'chsh not found. Change default shell manually later.'
+  else
+    chsh -s /bin/zsh "$USERNAME"
+  fi
 else
   echo 'Default shell already zsh. Skip.'
 fi
@@ -59,7 +63,10 @@ fi
 #############
 if [ ! -d "$HOME/.fzf" ] ||  ! command -v "fzf" &>/dev/null ; then
   git clone --depth 1 https://gitee.com/dictxiong/fzf.git "$HOME/.fzf"
-  "$HOME/.fzf/install" --all --no-zsh
+  mkdir -p "$HOME/.fzf/bin"
+  cp "$DOT_FILES_DIR/bin/fzf-0.42.0-linux_amd64.tar.gz" "$HOME/.fzf/bin/fzf-0.42.0-linux_amd64.tar.gz"
+  tar -xvf "$HOME/.fzf/bin/fzf-0.42.0-linux_amd64.tar.gz" -C "$HOME/.fzf/bin"
+  "$HOME/.fzf/install" --all --no-zsh --no-update-rc
 fi
 
 if ! command -v "rg" &> /dev/null; then
