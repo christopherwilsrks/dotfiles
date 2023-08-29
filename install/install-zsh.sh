@@ -59,6 +59,9 @@ fi
 #############
 if [ ! -d "$HOME/.fzf" ] ||  ! command -v "fzf" &>/dev/null ; then
   git clone --depth 1 https://gitee.com/dictxiong/fzf.git "$HOME/.fzf"
+  mkdir -p "$HOME/.fzf/bin"
+  cp "$DOT_FILES_DIR/bin/fzf-0.42.0-linux_amd64.tar.gz" "$HOME/.fzf/bin/fzf-0.42.0-linux_amd64.tar.gz"
+  tar -xvf "$HOME/.fzf/bin/fzf-0.42.0-linux_amd64.tar.gz" -C "$HOME/.fzf/bin"
   "$HOME/.fzf/install" --all --no-zsh
 fi
 
