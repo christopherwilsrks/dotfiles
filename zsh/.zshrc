@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-plugins=(git fd fzf zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 autoload -U compinit; compinit
 

@@ -4,9 +4,9 @@
 if ! command -v "zsh" &> /dev/null; then
   echo 'zsh has not been installed. Installing...'
   if command -v "yum" &> /dev/null; then
-    yum install zsh -y
+    sudo yum install zsh -y
   elif command -v "apt" &> /dev/null; then
-    apt install zsh -y
+    sudo apt install zsh -y
   else
     echo 'Unknown distribution! Neither yum nor apt found.'
   fi
@@ -21,7 +21,7 @@ if [ "$SHELL" != "/bin/zsh" ]; then
   if ! command -v "chsh" &> /dev/null; then
     echo 'chsh not found. Change default shell manually later.'
   else
-    chsh -s /bin/zsh "$USERNAME"
+    sudo chsh -s /bin/zsh "$USERNAME"
   fi
 else
   echo 'Default shell already zsh. Skip.'
@@ -62,7 +62,9 @@ fi
 #    fzf    #
 #############
 if [ ! -d "$HOME/.fzf" ] ||  ! command -v "fzf" &>/dev/null ; then
-  git clone --depth 1 https://gitee.com/dictxiong/fzf.git "$HOME/.fzf"
+  git clone https://gitee.com/dictxiong/fzf.git "$HOME/.fzf"
+  cd "$HOME/.fzf" || exit
+  git checkout -b 0.42.0 0.42.0
   mkdir -p "$HOME/.fzf/bin"
   cp "$DOT_FILES_DIR/bin/fzf-0.42.0-linux_amd64.tar.gz" "$HOME/.fzf/bin/fzf-0.42.0-linux_amd64.tar.gz"
   tar -xvf "$HOME/.fzf/bin/fzf-0.42.0-linux_amd64.tar.gz" -C "$HOME/.fzf/bin"
@@ -72,10 +74,10 @@ fi
 if ! command -v "rg" &> /dev/null; then
   echo 'RipGrep has not been installed. Installing...'
   if command -v "yum" &> /dev/null; then
-    yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-    yum install ripgrep -y
+    sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+    sudo yum install ripgrep -y
   elif command -v "apt" &> /dev/null; then
-    apt install ripgrep -y
+    sudo apt install ripgrep -y
   else
     echo 'Unknown distribution! Neither yum nor apt found.'
   fi
